@@ -8,6 +8,7 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,8 +25,8 @@ const Login = () => {
 
       dispatch(addUser(res.data));
       navigate("/");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      setError(err?.response?.data || "Something went wrong");
     }
   };
   return (
@@ -58,6 +59,7 @@ const Login = () => {
             </label>
           </div>
           <div className="card-actions">
+            <p className="text-red-600">ERROR : {error}</p>
             <button onClick={hangleLogin} className="btn btn-primary">
               Login
             </button>
