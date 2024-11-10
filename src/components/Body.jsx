@@ -36,7 +36,10 @@ const Body = () => {
   return (
     <div>
       <NavBar />
-      <Outlet />
+      <div className="h-screen">
+        <Outlet />
+      </div>
+
       <Footer />
     </div>
   );
